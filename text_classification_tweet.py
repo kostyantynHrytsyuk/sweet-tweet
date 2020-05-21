@@ -1,3 +1,4 @@
+import nltk
 from nltk import pos_tag
 from nltk.corpus import stopwords, wordnet
 from nltk.stem import WordNetLemmatizer
@@ -79,8 +80,14 @@ def text_pre_processing(df):
     return get_clean_tweets(df)
 
 
-df = get_data_from_file('training.1600000.processed.noemoticon.csv')
-#nltk.download('popular')
+# Test data
+df = get_data_from_file('testdata.manual.2009.06.14.csv')
+
+# Full data set
+# To launch project with full data set, please, unzip archive tweets_data to the repository folder
+# df = get_data_from_file('training.1600000.processed.noemoticon.csv')
+
+nltk.download('popular')
 
 train_tweets = text_pre_processing(df)
 train_tweets = train_tweets.rename(columns={0: 'tweet_text',
